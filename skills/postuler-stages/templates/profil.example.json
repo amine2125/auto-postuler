@@ -1,5 +1,5 @@
 {
-  "_aide": "Copié en postulation/profil.json pendant l'installation. Claude le remplit en posant les questions UNE fois. Ne jamais publier ce fichier.",
+  "_aide": "Copié en postulation/profil.json pendant l'installation. L'assistant le remplit en posant les questions UNE fois. Ne jamais publier ce fichier.",
   "identite": {
     "civilite": "",
     "prenom": "",
@@ -40,7 +40,7 @@
     {
       "nom": "",
       "url": "",
-      "notes": "Comment chercher/postuler sur ce portail (Claude complète au fil des candidatures)",
+      "notes": "Comment chercher/postuler sur ce portail (L'assistant complète au fil des candidatures)",
       "filtres_par_defaut": ""
     }
   ],
@@ -51,6 +51,6 @@
     "mots_a_eviter": []
   },
   "reponses_apprises": {
-    "_aide": "Claude ajoute ici chaque nouvelle réponse de formulaire (clé claire, valeur courte) pour ne plus jamais la redemander."
+    "_aide": "L'assistant ajoute ici chaque nouvelle réponse de formulaire (clé claire, valeur courte) pour ne plus jamais la redemander."
   }
 }

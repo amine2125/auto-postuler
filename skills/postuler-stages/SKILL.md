@@ -12,7 +12,7 @@ Ce skill est générique : il sert à n'importe quel étudiant (Polytechnique Mo
 ## Phase 0 — Installation (premier lancement)
 Au début de CHAQUE session, vérifie si le dossier de travail `postulation/` existe avec `profil.json` rempli. Si oui, passe à la Phase 1. Sinon, fais l'installation ci-dessous, en posant les questions groupées en un seul message, puis continue directement avec la demande de l'utilisateur.
 
-1. **Dossier de travail** : demande où le créer (par défaut `Documents/postulation`). Si Claude tourne dans le cloud, demande à l'utilisateur d'ajouter son dossier à la conversation. Crée :
+1. **Dossier de travail** : demande où le créer (par défaut `Documents/postulation`). Si l'assistant tourne dans le cloud, demande à l'utilisateur de lui donner accès à son dossier (ajout à la conversation, upload ou équivalent). Crée :
    ```
    postulation/
      base/  scripts/  candidatures/  suivi/  profil.json
@@ -37,7 +37,7 @@ L'utilisateur ne veut PAS être interrompu pour une question dont la réponse es
 3. **Quand tu dois choisir**, prends l'option la plus raisonnable, note-la en une ligne dans le résumé final et continue.
 4. **AUTO-APPRENTISSAGE — apprends au fur et à mesure.** Chaque fois qu'un formulaire pose une question nouvelle, ou que l'utilisateur donne ou corrige une réponse, ajoute-la aussitôt dans `profil.json` > `reponses_apprises` (clé claire, valeur courte, ex. `"deja_employe_par_l_entreprise": "Non"`). Au début de chaque candidature, relis cette section et réutilise les réponses sans les redemander. Une correction de l'utilisateur écrase l'ancienne valeur.
 5. **Apprends aussi les portails** : quand tu comprends comment un site ou un portail fonctionne (filtres, champs d'upload, piège), note-le dans `profil.json` > `portails` > `notes`.
-6. En fin de session, si tu as appris une règle générale ou un piège qui servirait à tout étudiant (pas une donnée personnelle), propose de mettre à jour ce skill avec `propose_skills` (SKILL.md complet), sans attendre qu'on te le demande. Ne mets jamais d'information personnelle dans le skill.
+6. En fin de session, si tu as appris une règle générale ou un piège qui servirait à tout étudiant (pas une donnée personnelle), propose de mettre à jour ce skill (donne le SKILL.md complet à jour, ou ouvre une pull request sur le dépôt du skill), sans attendre qu'on te le demande. Ne mets jamais d'information personnelle dans le skill.
 
 ## Dossier de travail
 - `base/cv_fr.tex`, `base/cv_en.tex` : CV de base, format figé. `base/cv_<langue>_reference.pdf` : rendu de référence.
@@ -51,20 +51,20 @@ L'utilisateur ne veut PAS être interrompu pour une question dont la réponse es
 Lance les scripts depuis `postulation/`. Si le moteur LaTeX manque, compile dans l'espace de travail cloud puis recopie les PDF dans le dossier de la candidature.
 
 ## Règles de vitesse
-1. Lis les pages en texte (`get_page_text`, `read_page`, `find`). Capture d'écran seulement si une action échoue.
+1. Lis les pages en texte (extraction du texte ou de l'arbre d'accessibilité de la page, recherche d'éléments). Capture d'écran seulement si une action échoue.
 2. Travaille par lot, une phase à la fois pour toutes les offres.
 3. Copie la base, puis fais des modifications ciblées. Ne réécris jamais un `.tex` en entier : un petit script Python qui remplace des chaînes exactes (une seule occurrence chacune) pour tout le lot est le plus rapide.
 4. Lis les fichiers de base une seule fois par session.
 5. Ne commente pas chaque étape. Un seul tableau récapitulatif à la fin.
 
 ## Phase 1 — Collecte
-**Portail de l'école** (avec Claude in Chrome, navigateur déjà connecté) :
+**Portail de l'école** (avec un outil de navigation web piloté par l'assistant : extension de navigateur, navigateur intégré ou automatisation, session de l'utilisateur déjà connectée) :
 - Si une page de connexion apparaît, demande à l'utilisateur de se connecter. Ne saisis jamais son mot de passe.
 - Applique les filtres de `profil.json` : type Stage, ses disciplines, **sessions à venir seulement** (jamais la session en cours ni une passée). Si une case ne réagit pas, clique son libellé ; vérifie l'état réel des cases avec JavaScript.
 - Lis la liste des résultats une seule fois. Vérifie les doublons en une commande : `python scripts/suivi.py deja <code1> <code2> …`.
 - Écarte les offres déjà dans le suivi et celles sans rapport avec ses disciplines. Préfère une offre par entreprise par lot, sauf demande contraire.
 - **Offres expirées : ne postule jamais** (date limite avant aujourd'hui, état différent de « ouvert », ou site externe qui indique que l'offre est fermée). Dans le doute, demande.
-- Ouvre chaque offre en cliquant depuis la liste : beaucoup de portails lient l'URL de détail à la session (checksum), ne la modifie jamais. Lis la page avec `get_page_text` ou JavaScript (sortie tronquée vers 1000 caractères : découpe).
+- Ouvre chaque offre en cliquant depuis la liste : beaucoup de portails lient l'URL de détail à la session (checksum), ne la modifie jamais. Lis la page avec l'extraction de texte ou JavaScript (sortie tronquée vers 1000 caractères : découpe).
 - Si l'offre demande de postuler sur le site de l'entreprise, note le lien dans `offre.txt` et `lien` (Phase 5).
 - Enregistre le texte utile dans `candidatures/<AAAA-MM-JJ>_<Entreprise>_<code>/offre.txt`, URL sur la première ligne.
 
@@ -102,7 +102,7 @@ Tableau court : # | Entreprise | Poste | Session | Langue | Date limite | À app
 **Exception** : si l'utilisateur a déjà dit de postuler/déposer (« postule à 10 offres », « dépose tout »), ne redemande pas. Une fois le go donné dans la conversation, ne le redemande plus.
 
 ## Phase 5 — Dépôt
-**Portail de l'école** : ouvre le détail depuis la recherche, repère les champs (`find` : « file inputs for CV and cover letter; submit button »), téléverse les PDF avec `file_upload` en utilisant le chemin absolu exact (ne clique jamais le bouton de fichier : il ouvre une fenêtre système invisible). Refais un `find` sur CHAQUE page de détail (les `ref` changent). Relevé : sélectionne-le dans le menu (JavaScript : change la valeur du `select` puis `dispatchEvent(new Event('change',{bubbles:true}))`). Clique « Postuler », vérifie le message de succès, statut `"Postulé"`. Si l'offre exige autre chose, applique la règle n°1 ; n'invente jamais un fait ; sinon statut `"À compléter"`.
+**Portail de l'école** : ouvre le détail depuis la recherche, repère les champs (recherche d'éléments : champs de fichier CV et lettre, bouton d'envoi), téléverse les PDF avec l'outil de téléversement de fichiers du navigateur, en utilisant le chemin absolu exact (ne clique jamais le bouton de fichier : il ouvre une fenêtre système invisible). Refais la recherche d'éléments sur CHAQUE page de détail (les `ref` changent). Relevé : sélectionne-le dans le menu (JavaScript : change la valeur du `select` puis `dispatchEvent(new Event('change',{bubbles:true}))`). Clique « Postuler », vérifie le message de succès, statut `"Postulé"`. Si l'offre exige autre chose, applique la règle n°1 ; n'invente jamais un fait ; sinon statut `"À compléter"`.
 
 **Sites d'entreprise** : postule de bout en bout.
 1. Cookies : refuse les non essentiels, à chaque page si la bannière revient.
@@ -114,8 +114,8 @@ Tableau court : # | Entreprise | Poste | Session | Langue | Date limite | À app
 7. **Consentements obligatoires** (vie privée, conditions) : accepte-les seulement si l'utilisateur l'a autorisé une fois (note-le dans `profil.json` > `preferences`) ; sinon demande une seule fois puis mémorise. Signale-les dans le message final.
 8. Champs obligatoires sans info : `profil.json` (`salaire_souhaite`, site par défaut = GitHub). « Petit mot de présentation » : 3–4 phrases vraies tirées du CV.
 9. Relis la page entière avant de soumettre (un champ obligatoire peut se cacher au milieu).
-10. Remplis les champs texte avec `form_input` et les `ref` plutôt qu'en cliquant/tapant. Pour `file_upload`, il faut le `ref` du vrai `input type=file`.
-11. Listes déroulantes (select2) : `find` le vrai `<select>`, puis `form_input` avec le libellé exact. Les champs conditionnels n'apparaissent qu'après le choix précédent.
+10. Remplis les champs texte avec l'outil de saisie de formulaire et les références d'éléments plutôt qu'en cliquant/tapant. Pour le téléversement, il faut la référence du vrai `input type=file`.
+11. Listes déroulantes (select2) : retrouve le vrai `<select>`, puis choisis l'option avec le libellé exact. Les champs conditionnels n'apparaissent qu'après le choix précédent.
 12. Formulaires multi-pages : « Save and Continue » enregistre la page ; recharger sans l'avoir fait perd les fichiers.
 
 **LinkedIn** : **ne soumets jamais automatiquement** (interdit aux bots, risque de restriction du compte). Prépare les fichiers ; c'est l'utilisateur qui clique « Postuler ». Statut `"Prêt"`.
@@ -134,11 +134,11 @@ Message final : un tableau (entreprise, poste, statut), la liste « À apprendre
 - `ERR_FILE_NOT_FOUND` au téléversement = mauvais chemin : utilise le chemin absolu exact.
 - Les cases de dépôt peuvent être étiquetées « (français) » même pour un dépôt en anglais : mets-y quand même les PDF anglais.
 - Taille des PDF : souvent < 1000 Ko sur les portails d'école, < 512 Ko sur tal.net.
-- `javascript_tool` bloque la sortie qui contient une URL avec paramètres : lis avec `get_page_text`. Sortie JS tronquée vers 1000 caractères.
+- `javascript_tool` bloque la sortie qui contient une URL avec paramètres : lis avec l'extraction de texte. Sortie JS tronquée vers 1000 caractères.
 - Comptes/codes obligatoires (Workday, tal.net, ADP…) : statut « À compléter », demande une seule fois, continue.
-- Workday : Échap revient en arrière ; sélectionner dans une liste fait défiler la page (refais `find`) ; les champs d'études demandent une recherche puis Entrée.
+- Workday : Échap revient en arrière ; sélectionner dans une liste fait défiler la page (refais la recherche d'éléments) ; les champs d'études demandent une recherche puis Entrée.
 - BambooHR : reCAPTCHA, laisse la page ouverte.
 - Offres sans formulaire, non logicielles, fédérales/municipales ou de site inatteignable : saute-les et note-le.
-- tal.net : `get_page_text` souvent vide, utilise `read_page`/`find`.
+- tal.net : l'extraction de texte est souvent vide, utilise l'arbre d'accessibilité.
 
 Quand tu résous un nouveau piège général, propose de l'ajouter ici (règle n°1.6).

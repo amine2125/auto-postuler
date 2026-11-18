@@ -1,37 +1,37 @@
 # auto-postuler 🎓📨
 
-Un **skill Claude** qui postule à des stages pour toi : il lit l'offre, adapte ton CV et ta lettre (LaTeX), compile les PDF, dépose la candidature et tient un suivi Excel. Il fonctionne pour **n'importe quelle école** (Polytechnique Montréal, ETS, Concordia, UdeM…) : tout ce qui est personnel est stocké chez toi, rien n'est dans ce dépôt.
+Un **skill pour assistant IA** qui postule à des stages pour toi : il lit l'offre, adapte ton CV et ta lettre (LaTeX), compile les PDF, dépose la candidature et tient un suivi Excel. Il fonctionne pour **n'importe quelle école** (Polytechnique Montréal, ETS, Concordia, UdeM…) : tout ce qui est personnel est stocké chez toi, rien n'est dans ce dépôt.
 
 ## Ce que tu as besoin
 
 | Quoi | Pourquoi |
 |---|---|
-| Un compte **Claude** (claude.ai ou Claude Code) | exécute le skill |
-| L'extension **Claude in Chrome** (ou navigateur intégré) | pour lire les offres et déposer les fichiers dans *ton* navigateur déjà connecté |
+| Un **assistant IA capable d'agir** (l'assistant, Gemini, ChatGPT… avec accès à des fichiers, à un terminal et à un navigateur) | exécute le skill |
+| Un **outil de navigation web** pour l'assistant (extension de navigateur, navigateur intégré, automatisation) | lire les offres et déposer les fichiers dans *ton* navigateur déjà connecté |
 | **Python 3** + `pip install openpyxl` | scripts de compilation et de suivi |
 | **LaTeX** : MiKTeX (Windows), MacTeX (macOS), `texlive-latex-extra texlive-lang-french` (Linux) | génère les PDF |
 | Ton **CV** (PDF, Word, LaTeX ou simple texte) | base de toutes tes candidatures |
 
-Pas de dossier, pas d'Excel, pas de profil à préparer : **Claude les crée au premier lancement.**
+Pas de dossier, pas d'Excel, pas de profil à préparer : **l'assistant les crée au premier lancement.**
 
 ## Installation (2 minutes)
 
-### Option A : le plus simple, laisse Claude tout faire
-Copie-colle ce message dans Claude (Claude Code idéalement, ou une conversation avec accès à un dossier) :
+### Option A : l'assistant s'en occupe
+Donne ce message à ton assistant (il doit pouvoir lire des fichiers et utiliser un terminal) :
 
-> Installe le skill `postuler-stages` depuis https://github.com/amine2125/auto-postuler : copie le dossier `skills/postuler-stages` dans mon dossier de skills Claude (`~/.claude/skills/`), puis lance-le pour faire l'installation complète (dossier `postulation`, scripts, profil, mon CV).
+> Récupère le skill `postuler-stages` depuis https://github.com/amine2125/auto-postuler (dossier `skills/postuler-stages`), installe-le comme skill ou instructions permanentes, puis lance-le pour faire l'installation complète (dossier `postulation`, scripts, profil, mon CV).
 
 ### Option B : à la main
 ```bash
 git clone https://github.com/amine2125/auto-postuler
-mkdir -p ~/.claude/skills
-cp -r auto-postuler/skills/postuler-stages ~/.claude/skills/
 ```
-Sur claude.ai, tu peux aussi zipper le dossier `skills/postuler-stages` et l'importer dans **Settings → Capabilities → Skills**.
+Puis selon ton assistant :
+- **l'assistant Code** : copie `skills/postuler-stages` dans `~/.claude/skills/`. Sur claude.ai : zip du dossier, importé dans les réglages des skills.
+- **Gemini, ChatGPT ou autre** : pas de format « skill » commun. Colle le contenu de `skills/postuler-stages/SKILL.md` comme instructions du projet / du Gem / du GPT (ou dans le fichier d'instructions de ton outil, ex. `GEMINI.md`, `AGENTS.md`), et mets le dossier `skills/postuler-stages` à portée de l'assistant pour qu'il copie les scripts et gabarits.
 
-## Premier lancement : ce que Claude fait avec toi
+## Premier lancement : ce que l'assistant fait avec toi
 
-Dis simplement : **« lance le skill postuler-stages »**. Comme tu n'as encore rien, Claude passe par la **Phase 0 (installation)** :
+Dis simplement : **« lance le skill postuler-stages »** (ou « suis les instructions de postuler-stages »). Comme tu n'as encore rien, l'assistant passe par la **Phase 0 (installation)** :
 
 1. **Crée ton dossier `postulation/`** (par défaut dans `Documents/`) avec `base/`, `scripts/`, `candidatures/`, `suivi/`.
 2. **Installe les scripts** (`compiler.py`, `suivi.py`) et vérifie Python, openpyxl et LaTeX.
@@ -61,13 +61,13 @@ Dis aussi : *« J'ai une entrevue chez X »* → statut mis à jour + questions 
 
 ## 🧠 Il apprend de toi
 
-Chaque fois qu'un formulaire pose une question nouvelle ou que tu corriges une réponse, Claude l'enregistre dans `profil.json` > `reponses_apprises` et **ne te la redemande plus jamais**. Il retient aussi comment fonctionne chaque portail. Il t'interrompt seulement pour un vrai blocage.
+Chaque fois qu'un formulaire pose une question nouvelle ou que tu corriges une réponse, l'assistant l'enregistre dans `profil.json` > `reponses_apprises` et **ne te la redemande plus jamais**. Il retient aussi comment fonctionne chaque portail. Il t'interrompt seulement pour un vrai blocage.
 
 ## Garde-fous
 
 - **LinkedIn** : il prépare tout mais c'est **toi** qui cliques « Postuler » (les bots sont interdits, ton compte pourrait être restreint).
-- **reCAPTCHA** : jamais coché par Claude, il te le demande.
-- **Comptes et mots de passe** : jamais créés ni saisis par Claude.
+- **reCAPTCHA** : jamais coché par l'assistant, il te le demande.
+- **Comptes et mots de passe** : jamais créés ni saisis par l'assistant.
 - **Offres expirées** : jamais envoyées.
 - **Honnêteté** : aucun fait ni projet inventé ; les compétences ajoutées sont signalées.
 - Cookies non essentiels : refusés.
@@ -76,7 +76,7 @@ Chaque fois qu'un formulaire pose une question nouvelle ou que tu corriges une r
 
 ```
 skills/postuler-stages/
-  SKILL.md                  # les instructions de Claude (installation + 6 phases + règles)
+  SKILL.md                  # les instructions de l'assistant (installation + 6 phases + règles)
   scripts/compiler.py       # compile cv.tex / lettre.tex, vérifie 1 page
   scripts/suivi.py          # suivi Excel
   templates/                # CV et lettres de base FR/EN, profil.example.json
@@ -90,4 +90,4 @@ Ton dossier `postulation/` contient tes infos personnelles (adresse, téléphone
 
 ## Contribuer
 
-Tu as un piège à signaler ou un portail d'école à documenter (ETS, Concordia, UdeM…) ? Claude te proposera la mise à jour du skill en fin de session, ou ouvre une pull request. **Ne mets jamais de données personnelles dans le skill.**
+Tu as un piège à signaler ou un portail d'école à documenter (ETS, Concordia, UdeM…) ? l'assistant te proposera la mise à jour du skill en fin de session, ou ouvre une pull request. **Ne mets jamais de données personnelles dans le skill.**
