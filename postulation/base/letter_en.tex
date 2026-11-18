@@ -1,0 +1,96 @@
+%-------------------------------------------------------------
+% LETTRE DE BASE - ANGLAIS (modèle vierge)
+% Configuration (une seule fois) : l'agent remplace chaque [[MOI: ...]]
+% avec les infos de l'utilisateur et écrit le paragraphe de réalisations
+% à partir de son CV. Il laisse les autres [[...]] : ils se remplissent
+% pour chaque offre.
+% Pour chaque offre : le skill copie ce fichier dans
+% candidatures/<dossier>/lettre.tex, remplace chaque [[...]] et réécrit
+% les paragraphes marqués "ADAPTER". FORMAT FIGÉ : ne pas toucher au
+% préambule ni à la mise en page. No "Subject" line.
+% Longueur visée : 250-350 mots, 1 page.
+%-------------------------------------------------------------
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\begin{document}
+
+\begin{flushleft}
+    \textbf{\Large [[MOI: First Last]]} \\
+    [[MOI: phone]] $|$ \href{mailto:[[MOI: email]]}{[[MOI: email]]} \\
+    [[MOI: City, QC]] $|$ \href{[[MOI: LinkedIn URL]]}{\underline{LinkedIn}}
+\end{flushleft}
+
+\vspace{20pt}
+
+\begin{flushright}
+    [[MOI: City]], \today
+\end{flushright}
+
+\vspace{10pt}
+
+\begin{flushleft}
+    Attention: Recruitment Team \\
+    \textbf{[[COMPANY]]} \\
+    [[CITY, PROVINCE]]
+\end{flushleft}
+
+\vspace{20pt}
+
+Dear Hiring Manager,
+
+\vspace{10pt}
+
+% Intro. If the user is currently doing an internship, mention "currently an intern
+% at X"; if it is over, "having completed an internship at X".
+As a [[MOI: program, e.g. Software Engineering]] student at [[MOI: school]], I am pleased to submit my application for the [[JOB TITLE]] position at [[COMPANY]] for [[TERM, e.g. "Winter 2027"]].
+
+\vspace{10pt}
+
+% ADAPTER: 3-4 sentences. Keep the CV achievements most relevant to the posting
+% and mention 2-4 technologies from the posting that the user has actually used.
+% No keyword lists.
+[[MOI: Default paragraph (3-4 sentences) about the 2-3 strongest achievements from the CV, with concrete results.]]
+
+\vspace{10pt}
+
+% ADAPTER: 2-3 sentences about the company and the role, taken from the posting
+% (mission, products, responsibilities). Never invent facts about the company.
+[[What draws the user to the company, based on the posting.]] I am excited about the opportunity to [[two or three responsibilities of the role]]. My autonomy, rigor and ability to learn quickly will allow me to contribute effectively to your team from day one.
+
+\vspace{10pt}
+
+Thank you for considering my application. I would welcome the opportunity to discuss how I can contribute to your team in an interview.
+
+\vspace{20pt}
+
+Sincerely,
+
+\vspace{30pt}
+
+\noindent [[MOI: First Last]]
+
+\end{document}

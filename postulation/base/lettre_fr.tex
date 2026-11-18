@@ -1,0 +1,96 @@
+%-------------------------------------------------------------
+% LETTRE DE BASE - FRANÇAIS (modèle vierge)
+% Configuration (une seule fois) : l'agent remplace chaque [[MOI: ...]]
+% avec les infos de l'utilisateur et écrit le paragraphe de réalisations
+% à partir de son CV. Il laisse les autres [[...]] : ils se remplissent
+% pour chaque offre.
+% Pour chaque offre : le skill copie ce fichier dans
+% candidatures/<dossier>/lettre.tex, remplace chaque [[...]] et réécrit
+% les paragraphes marqués "ADAPTER". FORMAT FIGÉ : ne pas toucher au
+% préambule ni à la mise en page. Pas de ligne « Objet ».
+% Longueur visée : 250-350 mots, 1 page.
+%-------------------------------------------------------------
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[french]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\begin{document}
+
+\begin{flushleft}
+    \textbf{\Large [[MOI: Prénom Nom]]} \\
+    [[MOI: téléphone]] $|$ \href{mailto:[[MOI: courriel]]}{[[MOI: courriel]]} \\
+    [[MOI: Ville, QC]] $|$ \href{[[MOI: URL LinkedIn]]}{\underline{LinkedIn}}
+\end{flushleft}
+
+\vspace{20pt}
+
+\begin{flushright}
+    [[MOI: Ville]], le \today
+\end{flushright}
+
+\vspace{10pt}
+
+\begin{flushleft}
+    À l'attention de l'équipe de recrutement \\
+    \textbf{[[ENTREPRISE]]} \\
+    [[VILLE, PROVINCE]]
+\end{flushleft}
+
+\vspace{20pt}
+
+Madame, Monsieur,
+
+\vspace{10pt}
+
+% Intro. Si l'utilisateur fait un stage en ce moment, mentionner « actuellement
+% stagiaire chez X » ; s'il est terminé, « ayant effectué un stage chez X ».
+Étudiant en [[MOI: programme]] à [[MOI: établissement]], j'ai le plaisir de vous soumettre ma candidature pour le poste de [[TITRE DU POSTE]] au sein de [[ENTREPRISE]] pour [[SESSION, ex. « l'hiver 2027 »]].
+
+\vspace{10pt}
+
+% ADAPTER : 3-4 phrases. Garder les réalisations du CV les plus pertinentes pour
+% l'offre et citer 2-4 technos de l'offre que l'utilisateur a réellement utilisées.
+% Pas de liste de mots-clés.
+[[MOI: Paragraphe par défaut (3-4 phrases) sur les 2-3 meilleures réalisations du CV, avec des résultats concrets.]]
+
+\vspace{10pt}
+
+% ADAPTER : 2-3 phrases sur l'entreprise et le poste, tirées de l'offre
+% (mission, produits, responsabilités). Ne rien inventer sur l'entreprise.
+[[Ce qui attire l'utilisateur chez l'entreprise, d'après l'offre.]] Je suis très motivé à l'idée de [[deux ou trois responsabilités du poste]]. Mon autonomie, ma rigueur et ma capacité à apprendre rapidement me permettront de contribuer efficacement à votre équipe dès mon arrivée.
+
+\vspace{10pt}
+
+Je vous remercie de l'attention que vous porterez à ma candidature et reste à votre entière disposition pour un entretien.
+
+\vspace{20pt}
+
+Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+\vspace{30pt}
+
+\noindent [[MOI: Prénom Nom]]
+
+\end{document}

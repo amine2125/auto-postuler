@@ -1,0 +1,110 @@
+%-------------------------------------------------------------
+% CV DE BASE - FRANÇAIS (modèle vierge)
+% Configuration (une seule fois) : l'agent remplace chaque [[MOI: ...]]
+% avec le vrai CV de l'utilisateur, et ajuste le nombre d'entrées et de
+% puces à son vrai parcours. Le CV doit tenir sur 1 page.
+% Ensuite, ne jamais modifier ce fichier pour une offre : le skill le
+% copie dans candidatures/<dossier>/cv.tex et modifie la copie.
+% FORMAT FIGÉ : ne rien changer entre \documentclass et
+% \begin{document} (polices, marges, espacements, commandes).
+%-------------------------------------------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[letterpaper,left=0.6in,right=0.6in,top=0.42in,bottom=0.4in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\frenchsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}{\large\scshape}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{15pt}{6pt}
+
+\setlist[itemize]{leftmargin=1.15em, itemsep=2pt, topsep=5pt, parsep=0pt, partopsep=0pt}
+
+%----------COMMANDES----------
+% \experience{Entreprise}{Dates}{Poste}{Lieu}
+\newcommand{\experience}[4]{\textbf{#1}\hfill #2\\ \textit{#3}\hfill\textit{#4}}
+% \projet{Nom -- Description}{(technos ou contexte)}{Dates}
+\newcommand{\projet}[3]{\textbf{#1} {\small #2}\hfill #3}
+% espace entre deux entrées
+\newcommand{\entre}{\vspace{8pt}}
+
+%=============================================================
+\begin{document}
+
+%----------EN-TÊTE----------
+\begin{center}
+    {\Huge \textbf{[[MOI: Prénom Nom]]}} \\[3pt]
+    \href{mailto:[[MOI: courriel]]}{[[MOI: courriel]]}\enspace|\enspace{}[[MOI: téléphone]]\enspace|\enspace\href{[[MOI: URL LinkedIn]]}{LinkedIn}\enspace|\enspace\href{[[MOI: URL GitHub]]}{GitHub}
+\end{center}
+\vspace{-6pt}
+
+%----------EXPÉRIENCE----------
+\section{Expérience}
+
+\experience{[[MOI: Entreprise 1]]}{[[MOI: Mois AAAA -- Mois AAAA]]}{[[MOI: Poste]]}{[[MOI: Ville, Province]]}
+\begin{itemize}
+  \item [[MOI: Verbe d'action + ce que tu as fait + résultat (chiffré si possible)]]
+  \item [[MOI: Réalisation 2]]
+  \item [[MOI: Réalisation 3]]
+  \item [[MOI: Réalisation 4]]
+\end{itemize}
+\entre
+
+\experience{[[MOI: Entreprise ou association 2]]}{[[MOI: Mois AAAA -- présent]]}{[[MOI: Poste]]}{[[MOI: Ville, Province]]}
+\begin{itemize}
+  \item [[MOI: Réalisation 1]]
+  \item [[MOI: Réalisation 2]]
+  \item [[MOI: Réalisation 3]]
+\end{itemize}
+
+%----------PROJETS----------
+\section{Projets}
+
+\projet{[[MOI: Projet 1 -- Description courte]]}{([[MOI: technos principales]])}{[[MOI: Mois AAAA -- Mois AAAA]]}
+\begin{itemize}
+  \item [[MOI: Ce que fait le projet et ton rôle]]
+  \item [[MOI: Défi technique résolu et comment]]
+  \item [[MOI: Résultat ou impact]]
+\end{itemize}
+\entre
+
+\projet{[[MOI: Projet 2 -- Description courte]]}{([[MOI: technos ou contexte, ex. hackathon, équipe de 3]])}{[[MOI: Mois AAAA]]}
+\begin{itemize}
+  \item [[MOI: Réalisation 1]]
+  \item [[MOI: Réalisation 2]]
+  \item [[MOI: Réalisation 3]]
+\end{itemize}
+\entre
+
+\projet{[[MOI: Projet 3 -- Description courte]]}{}{[[MOI: Mois AAAA -- Mois AAAA]]}
+\begin{itemize}
+  \item [[MOI: Réalisation 1]]
+  \item [[MOI: Réalisation 2]]
+  \item [[MOI: Réalisation 3]]
+\end{itemize}
+
+%----------FORMATION----------
+\section{Formation}
+
+\textbf{[[MOI: Établissement]]}\hfill [[MOI: Ville, Province]]\\
+\textit{[[MOI: Programme, ex. Baccalauréat en génie logiciel]]}\hfill\textit{[[MOI: Diplomation prévue en mois AAAA]]}\\
+[[MOI: Crédits complétés, moyenne, prix… ou supprimer cette ligne]]
+
+%----------COMPÉTENCES TECHNIQUES----------
+\section{Compétences techniques}
+
+\textbf{Langages :} [[MOI: Python, Java, ...]]\\[2.5pt]
+\textbf{Frameworks :} [[MOI: React, Node.js, ...]]\\[2.5pt]
+\textbf{Outils :} [[MOI: Git, Linux, Docker, ...]]\\[2.5pt]
+\textbf{Méthodologies :} [[MOI: Agile/Scrum, tests unitaires, ...]]
+
+\end{document}

@@ -1,0 +1,109 @@
+%-------------------------------------------------------------
+% CV DE BASE - ANGLAIS (modèle vierge)
+% Configuration (une seule fois) : l'agent remplace chaque [[MOI: ...]]
+% avec le vrai CV de l'utilisateur (traduit en anglais), en gardant
+% exactement les mêmes entrées et puces que cv_fr.tex. 1 page.
+% Ensuite, ne jamais modifier ce fichier pour une offre : le skill le
+% copie dans candidatures/<dossier>/cv.tex et modifie la copie.
+% FORMAT FIGÉ : ne rien changer entre \documentclass et
+% \begin{document} (polices, marges, espacements, commandes).
+%-------------------------------------------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[letterpaper,left=0.6in,right=0.6in,top=0.42in,bottom=0.4in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}{\large\scshape}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{15pt}{6pt}
+
+\setlist[itemize]{leftmargin=1.15em, itemsep=2pt, topsep=5pt, parsep=0pt, partopsep=0pt}
+
+%----------COMMANDES----------
+% \experience{Entreprise}{Dates}{Poste}{Lieu}
+\newcommand{\experience}[4]{\textbf{#1}\hfill #2\\ \textit{#3}\hfill\textit{#4}}
+% \projet{Nom -- Description}{(technos ou contexte)}{Dates}
+\newcommand{\projet}[3]{\textbf{#1} {\small #2}\hfill #3}
+% espace entre deux entrées
+\newcommand{\entre}{\vspace{8pt}}
+
+%=============================================================
+\begin{document}
+
+%----------EN-TÊTE----------
+\begin{center}
+    {\Huge \textbf{[[MOI: First Last]]}} \\[3pt]
+    \href{mailto:[[MOI: email]]}{[[MOI: email]]}\enspace|\enspace{}[[MOI: phone]]\enspace|\enspace\href{[[MOI: LinkedIn URL]]}{LinkedIn}\enspace|\enspace\href{[[MOI: GitHub URL]]}{GitHub}
+\end{center}
+\vspace{-6pt}
+
+%----------EXPERIENCE----------
+\section{Experience}
+
+\experience{[[MOI: Company 1]]}{[[MOI: Month YYYY -- Month YYYY]]}{[[MOI: Job title]]}{[[MOI: City, Province]]}
+\begin{itemize}
+  \item [[MOI: Action verb + what you did + result (with a number if possible)]]
+  \item [[MOI: Achievement 2]]
+  \item [[MOI: Achievement 3]]
+  \item [[MOI: Achievement 4]]
+\end{itemize}
+\entre
+
+\experience{[[MOI: Company or club 2]]}{[[MOI: Month YYYY -- Present]]}{[[MOI: Role]]}{[[MOI: City, Province]]}
+\begin{itemize}
+  \item [[MOI: Achievement 1]]
+  \item [[MOI: Achievement 2]]
+  \item [[MOI: Achievement 3]]
+\end{itemize}
+
+%----------PROJECTS----------
+\section{Projects}
+
+\projet{[[MOI: Project 1 -- Short description]]}{([[MOI: main technologies]])}{[[MOI: Month YYYY -- Month YYYY]]}
+\begin{itemize}
+  \item [[MOI: What the project does and your role]]
+  \item [[MOI: Technical challenge solved and how]]
+  \item [[MOI: Result or impact]]
+\end{itemize}
+\entre
+
+\projet{[[MOI: Project 2 -- Short description]]}{([[MOI: technologies or context, e.g. hackathon, team of 3]])}{[[MOI: Month YYYY]]}
+\begin{itemize}
+  \item [[MOI: Achievement 1]]
+  \item [[MOI: Achievement 2]]
+  \item [[MOI: Achievement 3]]
+\end{itemize}
+\entre
+
+\projet{[[MOI: Project 3 -- Short description]]}{}{[[MOI: Month YYYY -- Month YYYY]]}
+\begin{itemize}
+  \item [[MOI: Achievement 1]]
+  \item [[MOI: Achievement 2]]
+  \item [[MOI: Achievement 3]]
+\end{itemize}
+
+%----------EDUCATION----------
+\section{Education}
+
+\textbf{[[MOI: School]]}\hfill [[MOI: City, Province]]\\
+\textit{[[MOI: Program, e.g. Bachelor's in Software Engineering]]}\hfill\textit{[[MOI: Expected graduation, Month YYYY]]}\\
+[[MOI: Credits completed, GPA, awards… or delete this line]]
+
+%----------TECHNICAL SKILLS----------
+\section{Technical Skills}
+
+\textbf{Languages:} [[MOI: Python, Java, ...]]\\[2.5pt]
+\textbf{Frameworks \& Libraries:} [[MOI: React, Node.js, ...]]\\[2.5pt]
+\textbf{Tools:} [[MOI: Git, Linux, Docker, ...]]\\[2.5pt]
+\textbf{Methodologies:} [[MOI: Agile/Scrum, unit testing, ...]]
+
+\end{document}

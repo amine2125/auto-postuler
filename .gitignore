@@ -1,9 +1,8 @@
-# Données personnelles : ne jamais publier
-postulation/
-profil.json
-candidatures/
-suivi/
-*.xlsx
+# Sorties générées (ne jamais publier ses candidatures)
+postulation/candidatures/*
+!postulation/candidatures/.gitkeep
+postulation/suivi/*
+!postulation/suivi/.gitkeep
 *.pdf
 *.aux
 *.log
