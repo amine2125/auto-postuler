@@ -2,17 +2,18 @@
 
 Un assistant IA postule à des stages pour toi : il adapte ton CV et ta lettre à chaque offre, fait les PDF, dépose la candidature et tient un suivi Excel. Marche avec le portail de stages de n'importe quelle école (Poly, ETS, Concordia…), LinkedIn et les sites d'entreprise.
 
-## Démarrer en 3 étapes
+## Comment l'utiliser
 
-1. **Installe** [Python 3](https://www.python.org/downloads/) (puis `pip install openpyxl`) et LaTeX ([MiKTeX](https://miktex.org/download) sur Windows).
-2. **Télécharge** ce dépôt et copie le dossier **`postulation`** où tu veux (ex. dans Documents).
-3. **Ouvre ton assistant IA dans ce dossier** (Claude Code, Gemini CLI, Codex…), mets ton CV dedans et écris :
+Tu ne configures rien : l'assistant installe tout lui-même.
 
-   > Configure le skill postuler-stages avec mon CV
+1. Ouvre ton assistant IA (Claude Code, Gemini CLI, Codex…).
+2. Joins ton CV et écris :
 
-L'assistant remplit tout (CV, lettres, profil) et te pose les quelques questions qui manquent. Ensuite : *« Postule aux nouvelles offres de stage »*.
+   > Installe et configure https://github.com/amine2125/auto-postuler pour moi. Voici mon CV.
 
-Détails et exemples : [`postulation/README.md`](postulation/README.md).
+3. Réponds à ses quelques questions (nom, école, disponibilités…). C'est tout : ensuite, dis *« Postule aux nouvelles offres de stage »*.
+
+Le dossier [`postulation/`](postulation/README.md) contient le skill et les modèles que l'assistant utilise.
 
 ## À savoir
 
