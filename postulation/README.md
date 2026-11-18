@@ -17,6 +17,6 @@ Il te montre les candidatures prêtes. Réponds « oui » (ou « oui sauf 2 ») 
 ## Bon à savoir
 - Ton CV garde toujours le même format ; seuls quelques mots changent selon l'offre.
 - Il peut ajouter jusqu'à 3 compétences exigées par l'offre, notées dans « À apprendre » de l'Excel. Dis-lui si tu préfères qu'il n'en ajoute pas.
-- Il ne crée pas de compte, ne tape pas de mot de passe et ne coche pas de captcha : il te le demande. Sur LinkedIn, tu cliques toi-même « Postuler ».
+- Il ne crée pas de compte, ne tape pas de mot de passe et ne coche pas de captcha : il te le demande. Sur LinkedIn, il peut postuler seul, mais LinkedIn peut restreindre un compte qui postule en rafale : il va doucement et te prévient.
 - Il retient tes réponses aux formulaires et ne te les redemande pas.
 - Ferme l'Excel avant de lancer une session. Relis toujours ce qui part : c'est ton nom dessus.
