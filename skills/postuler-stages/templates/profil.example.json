@@ -1,0 +1,56 @@
+{
+  "_aide": "Copié en postulation/profil.json pendant l'installation. Claude le remplit en posant les questions UNE fois. Ne jamais publier ce fichier.",
+  "identite": {
+    "civilite": "",
+    "prenom": "",
+    "nom": "",
+    "pronoms": "",
+    "courriel": "",
+    "telephone": "",
+    "adresse": { "rue": "", "ville": "", "province": "", "code_postal": "", "pays": "Canada" }
+  },
+  "liens": { "linkedin": "", "github": "", "portfolio": "" },
+  "etudes": {
+    "etablissement": "",
+    "programme": "",
+    "niveau": "",
+    "debut": "",
+    "fin_prevue": "",
+    "etudes_precedentes": ""
+  },
+  "travail": {
+    "autorise_au_canada": null,
+    "statut_citoyennete": "",
+    "reside_au_quebec": null,
+    "disponible_temps_plein_heures": 40,
+    "date_disponibilite": "",
+    "salaire_souhaite": "Selon l'échelle de l'entreprise",
+    "langue_de_contact": "Français",
+    "langues": { "francais": "", "anglais": "" },
+    "parrainage_visa_requis": null
+  },
+  "experiences_a_saisir_dans_les_formulaires": [
+    { "employeur": "", "titre": "", "debut": "", "fin": "", "description_courte": "" }
+  ],
+  "eedi_optionnel": {
+    "_aide": "Questions d'équité/diversité : ne remplir que ce que la personne choisit de divulguer. Sinon « Je préfère ne pas répondre ».",
+    "reponses": {}
+  },
+  "portails": [
+    {
+      "nom": "",
+      "url": "",
+      "notes": "Comment chercher/postuler sur ce portail (Claude complète au fil des candidatures)",
+      "filtres_par_defaut": ""
+    }
+  ],
+  "preferences": {
+    "types_de_poste": ["Stage"],
+    "disciplines": [],
+    "langue_par_defaut": "FR",
+    "mots_a_eviter": []
+  },
+  "reponses_apprises": {
+    "_aide": "Claude ajoute ici chaque nouvelle réponse de formulaire (clé claire, valeur courte) pour ne plus jamais la redemander."
+  }
+}

@@ -1,0 +1,9 @@
+# Données personnelles : ne jamais publier
+postulation/
+profil.json
+candidatures/
+suivi/
+*.xlsx
+*.pdf
+*.aux
+*.log
